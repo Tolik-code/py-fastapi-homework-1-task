@@ -51,7 +51,10 @@ async def get_movies(
     )
 
 
-@router.get("/movies/{movie_id}/", response_model=MovieDetailResponseSchema)
+@router.get(
+    "/movies/{movie_id}/",
+    response_model=MovieDetailResponseSchema
+)
 async def get_movie(
         movie_id: int,
         db: AsyncSession = Depends(get_db)
@@ -61,5 +64,8 @@ async def get_movie(
     )
     movie = result.scalar_one_or_none()
     if not movie:
-        raise HTTPException(status_code=404, detail="Movie with the given ID was not found.")
+        raise HTTPException(
+            status_code=404,
+            detail="Movie with the given ID was not found."
+        )
     return movie
