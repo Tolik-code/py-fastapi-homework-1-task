@@ -34,7 +34,7 @@ async def get_movies(
     total = total_result.scalar()
 
     if not films:
-        raise HTTPException(status_code=404, detail="No movies found.")
+        return []
 
     total_pages = math.ceil(total / per_page)
     next_page = None if page + 1 > total_pages else page + 1
