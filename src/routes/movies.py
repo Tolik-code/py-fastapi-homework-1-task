@@ -10,6 +10,7 @@ import math
 
 router = APIRouter()
 
+
 class PaginationParams(BaseModel):
     page: conint(ge=1) = 1
     per_page: conint(ge=1, le=20) = 10
